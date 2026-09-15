@@ -121,6 +121,41 @@
       <p class="disclaimer">Illustrative only. Mutual fund and equity returns fluctuate and are never guaranteed — this calculator assumes a constant annual return purely to show how compounding works, not to predict real results. Nothing here is investment advice.</p>
     </div>
 
+    <div class="sheet-card" id="bond-vs-fd">
+      <div class="sheet-head"><span class="card-badge">🏦</span><h2>Bond vs. Fixed Deposit</h2><span class="card-pill">▶ interactive</span></div>
+      <p class="lede">Both are ways to lend money instead of owning it — but they pay you back differently. See the same principal, the same rate, two different shapes of growth.</p>
+      <div class="calc-grid">
+        <div class="field">
+          <label for="bfPrincipal">Principal (₹)</label>
+          <input type="number" id="bfPrincipal" value="100000" min="1000" step="1000">
+        </div>
+        <div class="field">
+          <label for="bfRate">Annual rate (%) — both</label>
+          <input type="number" id="bfRate" value="7.5" min="0" max="20" step=".1">
+        </div>
+        <div class="field">
+          <label for="bfYears">Tenure (years)</label>
+          <input type="number" id="bfYears" value="5" min="1" max="30" step="1">
+        </div>
+      </div>
+      <div class="result-grid">
+        <div class="result gain"><span class="eyebrow">Fixed Deposit — maturity value</span><span class="val tabular" id="bfFdValue">—</span></div>
+        <div class="result"><span class="eyebrow">Bond — value if coupons not reinvested</span><span class="val tabular" id="bfBondValue">—</span></div>
+        <div class="result"><span class="eyebrow">Difference from compounding</span><span class="val tabular" id="bfDiff">—</span></div>
+      </div>
+      <p style="font-size:.92rem; color:var(--muted);">An FD automatically reinvests its interest, so it compounds. A bond pays its coupon to you in cash each year — what happens next is up to you. Manually reinvest every coupon at the same rate and the two converge; spend the coupons instead, and the FD pulls ahead purely because of what compounding does in the background.</p>
+      <p class="disclaimer">Illustrative only, at a single flat rate for both instruments for comparison. Real FD and bond rates differ by issuer and tenure, and bonds carry credit and interest-rate risk an FD (up to the insured limit) does not. Not investment advice.</p>
+    </div>
+
+    <div class="sheet-card" id="risk-quiz">
+      <div class="sheet-head"><span class="card-badge">🎚️</span><h2>What's Your Risk Comfort?</h2><span class="card-pill">▶ interactive</span></div>
+      <p class="lede">Five quick questions, a self-reflection score — not a recommendation. Answer honestly, not aspirationally.</p>
+      <div id="riskMount"></div>
+      <div class="quiz-score" id="riskResult" hidden></div>
+      <button class="btn" id="checkRisk">See my result</button>
+      <p class="disclaimer">This is a self-reflection tool, not personalized financial advice — actual asset allocation should account for your full financial picture. Consider speaking with a licensed advisor before making investment decisions.</p>
+    </div>
+
     <div class="sheet-card" id="contagion">
       <div class="sheet-head"><span class="card-badge">🌐</span><h2>The Global Contagion Explorer</h2><span class="card-pill">▶ interactive</span></div>
       <p class="lede">Click a market to see how the shockwave from Lehman Brothers' collapse on September 15, 2008 reached it within days.</p>

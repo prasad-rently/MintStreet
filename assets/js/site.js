@@ -22,6 +22,40 @@
     tickerTrack.innerHTML = html + html;
   }
 
+  /* ---- dispatch search & tag filter (dispatches index) ---- */
+  var dispatchSearch = document.getElementById("dispatchSearch");
+  var filterChips = document.getElementById("filterChips");
+  if (dispatchSearch && filterChips) {
+    var activeTag = "all";
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".card[data-tags]"));
+    var noResults = document.getElementById("noResults");
+
+    function applyFilter() {
+      var q = dispatchSearch.value.trim().toLowerCase();
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var tags = (card.getAttribute("data-tags") || "").split(" ");
+        var tagMatch = activeTag === "all" || tags.indexOf(activeTag) !== -1;
+        var haystack = (card.getAttribute("data-title") || "") + " " + card.textContent.toLowerCase();
+        var searchMatch = q === "" || haystack.toLowerCase().indexOf(q) !== -1;
+        var show = tagMatch && searchMatch;
+        card.style.display = show ? "" : "none";
+        if (show) { visibleCount++; }
+      });
+      if (noResults) { noResults.classList.toggle("visible", visibleCount === 0); }
+    }
+
+    dispatchSearch.addEventListener("input", applyFilter);
+    filterChips.querySelectorAll(".filter-chip").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        filterChips.querySelectorAll(".filter-chip").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+        btn.setAttribute("aria-pressed", "true");
+        activeTag = btn.getAttribute("data-tag");
+        applyFilter();
+      });
+    });
+  }
+
   /* ---- jargon buster quiz (practice page) ---- */
   var quizMount = document.getElementById("quizMount");
   if (quizMount) {
@@ -173,6 +207,92 @@
       document.getElementById(id).addEventListener("input", updatePP);
     });
     updatePP();
+  }
+
+  /* ---- bond vs. fixed deposit comparator (practice page) ---- */
+  var bfPrincipal = document.getElementById("bfPrincipal");
+  if (bfPrincipal) {
+    var inr3 = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+    function updateBondFd() {
+      var p = parseFloat(document.getElementById("bfPrincipal").value) || 0;
+      var rate = parseFloat(document.getElementById("bfRate").value) || 0;
+      var years = parseFloat(document.getElementById("bfYears").value) || 0;
+      var fdValue = p * Math.pow(1 + rate / 100, years);
+      var bondValue = p + (p * (rate / 100) * years);
+      document.getElementById("bfFdValue").textContent = inr3.format(fdValue);
+      document.getElementById("bfBondValue").textContent = inr3.format(bondValue);
+      document.getElementById("bfDiff").textContent = inr3.format(Math.max(fdValue - bondValue, 0));
+    }
+    ["bfPrincipal", "bfRate", "bfYears"].forEach(function (id) {
+      document.getElementById(id).addEventListener("input", updateBondFd);
+    });
+    updateBondFd();
+  }
+
+  /* ---- risk-comfort quiz (practice page) ---- */
+  var riskMount = document.getElementById("riskMount");
+  if (riskMount) {
+    var RISK_Q = [
+      { q: "How long until you might actually need this money?", opts: [
+        "Less than a year", "1 to 3 years", "3 to 7 years", "7 years or more"
+      ] },
+      { q: "Your investment drops 20% in a month. You most likely...", opts: [
+        "Sell everything immediately to stop the loss",
+        "Sell some, keep some",
+        "Do nothing and wait it out",
+        "See it as a chance to buy more at a lower price"
+      ] },
+      { q: "How would you describe your investing experience so far?", opts: [
+        "First time — this is all new",
+        "A little — mainly FDs or savings",
+        "Some — mutual funds or SIPs",
+        "Comfortable with stocks, and open to derivatives"
+      ] },
+      { q: "Which matters more to you, honestly?", opts: [
+        "Protecting what I already have, above all else",
+        "Mostly protection, with a little room for growth",
+        "Mostly growth, with some protection",
+        "Maximum growth — I can handle the swings"
+      ] },
+      { q: "Given the choice between two portfolios...", opts: [
+        "Definitely the one that grows slowly and steadily",
+        "I'd lean toward steady, most of the time",
+        "I'd lean toward faster growth, even with swings",
+        "Definitely the one that grows faster, wild swings included"
+      ] }
+    ];
+    var RISK_PROFILES = [
+      { max: 8, name: "Conservative", note: "You lean toward protecting what you have. Discussions of fixed deposits, bonds, and debt funds (see the Bond vs. FD sheet above) are probably more relevant to you than most trading content on this site." },
+      { max: 13, name: "Moderate", note: "You're comfortable with some ups and downs in exchange for growth, without wanting to bet the house. A mix of debt and equity is the typical shape of a moderate approach." },
+      { max: 17, name: "Growth-oriented", note: "You're relatively comfortable with volatility in pursuit of higher long-term growth — the SIP and equity content on this site (see The ₹500 Habit) is squarely aimed at this mindset." },
+      { max: 20, name: "Aggressive", note: "You're drawn to higher-risk, higher-reward approaches, potentially including derivatives. Module 4's coverage of futures and options is worth a careful, unhurried read before acting on that instinct." }
+    ];
+
+    riskMount.innerHTML = RISK_Q.map(function (item, qi) {
+      var opts = item.opts.map(function (o, oi) {
+        return '<label data-oi="' + oi + '"><input type="radio" name="r' + qi + '" value="' + (oi + 1) + '"> <span>' + o + "</span></label>";
+      }).join("");
+      return '<div class="quiz-q"><p class="qtext">' + (qi + 1) + ". " + item.q + "</p>" + opts + "</div>";
+    }).join("");
+
+    var checkRiskBtn = document.getElementById("checkRisk");
+    if (checkRiskBtn) {
+      checkRiskBtn.addEventListener("click", function () {
+        var total = 0, answered = 0;
+        RISK_Q.forEach(function (item, qi) {
+          var selected = riskMount.querySelector('input[name="r' + qi + '"]:checked');
+          if (selected) { total += parseInt(selected.value, 10); answered++; }
+        });
+        var resultBox = document.getElementById("riskResult");
+        resultBox.hidden = false;
+        if (answered < RISK_Q.length) {
+          resultBox.textContent = "Answer all " + RISK_Q.length + " questions to see your result.";
+          return;
+        }
+        var profile = RISK_PROFILES.filter(function (p) { return total <= p.max; })[0] || RISK_PROFILES[RISK_PROFILES.length - 1];
+        resultBox.innerHTML = "Score: " + total + " / 20 — <strong>" + profile.name + "</strong><br><span style=\"font-family:var(--sans); font-weight:400; font-size:.9rem;\">" + profile.note + "</span>";
+      });
+    }
   }
 
   /* ---- global contagion explorer (practice page) ---- */

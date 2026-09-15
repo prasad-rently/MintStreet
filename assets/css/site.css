@@ -241,6 +241,24 @@ main > .wrap{display:flex; flex-direction:column; gap:3rem;}
 .caption-box h3{font-size:1.05rem; margin-bottom:.4em;}
 .caption-box p{font-size:.92rem; color:var(--muted); margin-bottom:0;}
 
+/* ---- dispatch filter & search ---- */
+.filter-bar{display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; margin-bottom:-.6rem;}
+.search-field{position:relative; flex:1; min-width:220px;}
+.search-field input{
+  width:100%; font-family:var(--sans); font-size:.92rem; padding:.6em .9em .6em 2.2em;
+  border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink);
+}
+.search-field svg{position:absolute; left:.8em; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none;}
+.filter-chips{display:flex; gap:.4rem; flex-wrap:wrap;}
+.filter-chip{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.02em; padding:.4em .85em; border-radius:999px;
+  border:1px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer;
+}
+.filter-chip[aria-pressed="true"]{background:var(--accent-soft); color:var(--accent); border-color:var(--accent);}
+.filter-chip:hover{color:var(--ink);}
+.no-results{color:var(--muted); font-size:.94rem; padding:1.5rem 0; display:none;}
+.no-results.visible{display:block;}
+
 /* ---- term list (glossary) ---- */
 dl.term-list{margin:0 0 1.6rem;}
 .term-list .term{display:grid; grid-template-columns:190px 1fr; gap:1rem; padding-block:.65rem; border-top:1px solid var(--line); margin:0;}
