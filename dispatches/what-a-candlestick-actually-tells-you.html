@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What a Candlestick Actually Tells You — MintStreet</title>
+<meta name="description" content="Four numbers, one glance: how an 18th-century Japanese rice market's shorthand became the default way the world reads a price chart, and what each candle really encodes.">
+<meta property="og:title" content="What a Candlestick Actually Tells You">
+<meta property="og:description" content="Four numbers, one glance. How an 18th-century rice trader's shorthand became the default way the world reads a price chart.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/dispatches/what-a-candlestick-actually-tells-you.html">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/dispatches/what-a-candlestick-actually-tells-you.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  figure{margin:1.6rem 0;}
+  figcaption{font-size:.85rem; color:var(--muted); margin-top:.6rem;}
+</style>
+</head>
+<body>
+
+<div class="ticker-outer" aria-label="Almanac of market history">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="10" width="3" height="7" rx="1" fill="var(--accent)"></rect>
+          <rect x="8.5" y="5" width="3" height="12" rx="1" fill="var(--accent)"></rect>
+          <rect x="15" y="1" width="3" height="16" rx="1" fill="var(--accent)"></rect>
+        </svg>
+      </span>
+      <span class="brand-name">MintStreet</span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="index.html" aria-current="page">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="max-width:760px;">
+    <a class="back-link" href="index.html">← Back to all dispatches</a>
+    <article class="post-article">
+      <header>
+        <div class="chip-row"><span class="chip c-history">History</span><span class="chip c-share">Share Market</span></div>
+        <h1>What a Candlestick Actually Tells You</h1>
+        <p class="dek">Four numbers, one glance. How an 18th-century rice trader's shorthand became the default way the world reads a price chart.</p>
+        <div class="byline">5 min read · Supplementary dispatch</div>
+      </header>
+
+      <p>In the early 1700s, merchants at the Dōjima Rice Exchange in Osaka were doing something no market in the world had done in quite this way before: trading standardized contracts for rice that hadn't been harvested yet. It's widely considered the first organized futures market — and like every futures market since, it created a new problem. If you're betting on a price that will only be settled months from now, you need a way to track how that price is behaving <em>right now</em>, at a glance, day after day.</p>
+      <p>Japanese folklore credits one trader in particular with solving that problem with real flair: Munehisa Homma, a rice merchant from Sakata who became so successful trading at Dōjima that he was later nicknamed "the god of the markets." He's often credited as the father of candlestick charting, and he did write one of the earliest known texts touching on the psychology of trading, in 1755. Worth saying plainly, though: the exact candlestick shape used today is documented more clearly in Japanese sources from a century later, the Meiji era — so while the rice-market culture Homma came from is real and well documented, his personal authorship of the candlestick as we draw it now sits somewhere between history and legend. Markets, it turns out, have always loved a good origin story.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">Four numbers, packed into one shape</h2>
+      <p>Whatever its exact origin, the candlestick survived because it's a genuinely efficient piece of design. Every candle represents one time period — a day, an hour, a minute, whatever the chart is set to — and encodes exactly four numbers from that period:</p>
+      <dl class="term-list">
+        <div class="term"><dt>Open</dt><dd>The price at the start of the period.</dd></div>
+        <div class="term"><dt>Close</dt><dd>The price at the end of the period.</dd></div>
+        <div class="term"><dt>High</dt><dd>The highest price reached at any point during the period.</dd></div>
+        <div class="term"><dt>Low</dt><dd>The lowest price reached at any point during the period.</dd></div>
+      </dl>
+      <p>Traders call this set "OHLC" for short. The thick rectangle in the middle of a candle — its <strong>body</strong> — spans the distance between the open and the close. The thin lines poking out above and below it — the <strong>wicks</strong>, or shadows — mark how far the price reached beyond that range before settling back down, up to the high and down to the low.</p>
+
+      <figure>
+        <svg viewBox="0 0 420 290" role="img" aria-label="Anatomy of a candlestick: a bullish candle on the left with its wick spanning the high and low, and its body spanning the close at top and open at bottom; a bearish candle on the right, colored differently, with the body flipped so open is on top and close is on the bottom." fill="currentColor" style="width:100%; max-width:420px; height:auto; overflow:visible; color:var(--ink); font-family:'Inter',sans-serif;">
+          <line x1="130" y1="40" x2="130" y2="240" stroke="currentColor" stroke-width="2"></line>
+          <rect x="106" y="90" width="48" height="90" fill="var(--up)"></rect>
+
+          <line x1="152" y1="40" x2="168" y2="40" stroke="currentColor" stroke-width="1.2"></line>
+          <text x="174" y="44" font-size="13">High</text>
+          <line x1="154" y1="90" x2="168" y2="90" stroke="currentColor" stroke-width="1.2"></line>
+          <text x="174" y="94" font-size="13" fill="var(--up)">Close</text>
+          <line x1="154" y1="180" x2="168" y2="180" stroke="currentColor" stroke-width="1.2"></line>
+          <text x="174" y="184" font-size="13">Open</text>
+          <line x1="152" y1="240" x2="168" y2="240" stroke="currentColor" stroke-width="1.2"></line>
+          <text x="174" y="244" font-size="13">Low</text>
+
+          <line x1="290" y1="40" x2="290" y2="240" stroke="currentColor" stroke-width="2"></line>
+          <rect x="266" y="90" width="48" height="90" fill="var(--down)"></rect>
+          <line x1="314" y1="90" x2="330" y2="90" stroke="currentColor" stroke-width="1.2"></line>
+          <text x="336" y="94" font-size="13">Open</text>
+          <line x1="314" y1="180" x2="330" y2="180" stroke="currentColor" stroke-width="1.2"></line>
+          <text x="336" y="184" font-size="13" fill="var(--down)">Close</text>
+
+          <text x="130" y="270" text-anchor="middle" font-size="12" fill="var(--muted)">Up day</text>
+          <text x="290" y="270" text-anchor="middle" font-size="12" fill="var(--muted)">Down day</text>
+        </svg>
+        <figcaption>
+          <span class="bar-legend" style="margin-bottom:0;">
+            <span><span class="swatch" style="background:var(--up);"></span> Close above open — price rose</span>
+            <span><span class="swatch" style="background:var(--down);"></span> Close below open — price fell</span>
+          </span>
+          A down day is the same shape with open and close swapped — the body simply flips.
+        </figcaption>
+      </figure>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">Why bother, when a line chart is simpler?</h2>
+      <p>The SIP calculator and the MINT paper-trading sheet on the <a href="../practice/index.html">Practice Sheets</a> page both draw a simple line — one point per day, connected. That's honest, and it's enough to see a trend. But a line only tells you where a period <em>ended</em>. It throws away everything that happened in between.</p>
+      <p>A candlestick keeps that texture. A long wick with a small body says the price tried to move hard in one direction and got pulled back — buyers and sellers fighting to a rough draw. A long body with barely any wick says one side won decisively, start to finish, no real resistance. None of that predicts what happens tomorrow. It just describes today, in much more detail than a single closing number ever could.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">A word of caution</h2>
+      <p>A large corner of trading education is built around naming candlestick shapes — "hammer," "doji," "engulfing pattern" — and implying that spotting one tells you what price will do next. Treat that the way this site treats every neat, confident story about markets: skeptically. A candlestick is a compressed description of something that has already happened. It's genuinely useful vocabulary for talking about price action with precision. It is not a crystal ball, and no shape on a chart removes the uncertainty that the rest of this site — from <a href="tulips-dotcoms-and-crypto.html">bubbles</a> to <a href="the-night-wall-street-broke-the-world.html">2008</a> — keeps coming back to.</p>
+
+      <div class="next-post">
+        <span class="eyebrow">Continue reading</span>
+        <a href="index.html">All dispatches →</a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-brand">MintStreet</span>
+    <nav aria-label="Footer">
+      <a href="../index.html">Home</a>
+      <a href="index.html">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+    <p>An educational project — a story-first primer on how markets work. Nothing on this page is investment, trading, or financial advice.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
