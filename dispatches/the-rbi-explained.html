@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The RBI, Explained — MintStreet</title>
+<meta name="description" content="India's central bank, in plain English: what it actually does, how the repo rate works, and why one institution quietly touches almost every number on this site.">
+<meta property="og:title" content="The RBI, Explained: Who Sets the Price of Money">
+<meta property="og:description" content="Every loan rate, every FD, every inflation headline traces back to one institution. Here's what it actually does.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/dispatches/the-rbi-explained.html">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/dispatches/the-rbi-explained.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<div class="ticker-outer" aria-label="Almanac of market history">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="10" width="3" height="7" rx="1" fill="var(--accent)"></rect>
+          <rect x="8.5" y="5" width="3" height="12" rx="1" fill="var(--accent)"></rect>
+          <rect x="15" y="1" width="3" height="16" rx="1" fill="var(--accent)"></rect>
+        </svg>
+      </span>
+      <span class="brand-name">MintStreet</span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="index.html" aria-current="page">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="max-width:760px;">
+    <a class="back-link" href="index.html">← Back to all dispatches</a>
+    <article class="post-article">
+      <header>
+        <div class="chip-row"><span class="chip c-money">Money Market</span><span class="chip c-share">India</span></div>
+        <h1>The RBI, Explained: Who Sets the Price of Money</h1>
+        <p class="dek">Every loan rate, every FD, every inflation headline traces back to one institution. Here's what it actually does, and why it's been quietly running through almost every dispatch on this site.</p>
+        <div class="byline">6 min read · Supplementary dispatch</div>
+      </header>
+
+      <p>"RBI holds repo rate steady at 6.5%." It's the kind of headline most people scroll past without a second thought. But by the time you've read through Module 1's inflation tightrope, the ₹500 SIP habit, and the Bond vs. Fixed Deposit numbers on the Practice Sheets page, you've already been dealing with the consequences of that one sentence — you just hadn't met the institution behind it yet.</p>
+      <p>That institution is the Reserve Bank of India, and almost nothing about how money moves through the Indian economy happens without it, directly or indirectly.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">An unusual origin story</h2>
+      <p>The RBI was established on April 1, 1935, in Calcutta, under the Reserve Bank of India Act, 1934 — itself a response to a 1926 recommendation by the Hilton Young Commission that India needed a proper central bank. What's easy to forget is that for its first fourteen years, the RBI wasn't a government body at all: it was owned by private shareholders, an arrangement that looks strange by today's standards for an institution that controls a national currency. That changed in 1949, two years after independence, when the government nationalized it fully — bringing India's currency and monetary policy directly under public ownership, where it has stayed since.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">What the RBI actually does</h2>
+      <p>"Central bank" is a vague enough title that it's worth breaking into the specific, concrete jobs it covers:</p>
+      <dl class="term-list">
+        <div class="term"><dt>Issues the currency</dt><dd>The RBI is the sole authority permitted to print rupee notes (coins and the ₹1 note come from the Finance Ministry). Every note carries its promise.</dd></div>
+        <div class="term"><dt>Banker to banks</dt><dd>When a bank is short of cash overnight, it borrows from the RBI. When it has surplus cash, it parks it with the RBI. This overnight lending rate is the repo rate — more on that below.</dd></div>
+        <div class="term"><dt>Banker to the government</dt><dd>The RBI manages the government's accounts and helps run its market borrowing programs.</dd></div>
+        <div class="term"><dt>Sets monetary policy</dt><dd>Since 2016, this job formally belongs to the six-member Monetary Policy Committee (three from the RBI, three external appointees), who meet roughly every two months to set the repo rate against a mandated target: keep inflation at 4%, within a tolerance band of 2% to 6%.</dd></div>
+        <div class="term"><dt>Regulates banks</dt><dd>The RBI sets the rules banks must follow — how much capital they must hold, how they manage risk — and can act when one is in trouble, so that one bank's failure doesn't automatically become everyone's problem.</dd></div>
+        <div class="term"><dt>Manages foreign exchange</dt><dd>The RBI holds India's foreign currency and gold reserves and can step into currency markets to smooth out excessive swings in the rupee.</dd></div>
+      </dl>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">The repo rate, concretely</h2>
+      <p>Module 1 described the RBI's interest-rate tool in the abstract — raise rates to cool inflation, lower them to support growth. Here's the mechanism underneath that: the repo rate is the interest rate at which commercial banks borrow money from the RBI overnight, against government securities as collateral ("repo" is short for repurchase agreement).</p>
+      <p>Say the MPC raises the repo rate from 6.25% to 6.5%. Borrowing that overnight cash just got more expensive for banks — and banks, unsurprisingly, pass that cost on. Loan rates for things like home loans and business credit tend to drift up. Fixed deposit rates often rise too, since banks now need to attract deposits at a price that makes sense against their higher cost of RBI borrowing. Borrowing gets a little more expensive across the economy, spending slows a little, and — with a lag of months, not days — inflation tends to ease. Cut the repo rate, and the same chain runs in reverse: cheaper loans, usually lower FD rates, more spending, and a lift to growth at the cost of some inflation risk.</p>
+
+      <div class="callout">
+        <p><strong>See it in a number:</strong> the "annual rate" you enter into the <a href="../practice/index.html#bond-vs-fd">Bond vs. Fixed Deposit</a> or <a href="../practice/index.html#sip-calculator">SIP Calculator</a> on the Practice Sheets page doesn't move in isolation — it moves, loosely and with a delay, with exactly this rate.</p>
+      </div>
+
+      <p>None of this makes the RBI infallible or immune from criticism — reasonable people disagree constantly about whether a given rate decision is too aggressive or too timid. But once you can see the repo rate as the lever behind Module 1's inflation-versus-recession tightrope, rather than just a number in a headline, a lot of financial news stops being background noise.</p>
+
+      <div class="next-post">
+        <span class="eyebrow">Continue reading</span>
+        <a href="index.html">All dispatches →</a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-brand">MintStreet</span>
+    <nav aria-label="Footer">
+      <a href="../index.html">Home</a>
+      <a href="index.html">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+    <p>An educational project — a story-first primer on how markets work. Nothing on this page is investment, trading, or financial advice.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
