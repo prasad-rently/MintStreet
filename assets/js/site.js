@@ -295,6 +295,141 @@
     }
   }
 
+  /* ---- diversification simulator (practice page) ---- */
+  var divA = document.getElementById("divA");
+  if (divA) {
+    var DIV_DOMAIN_MIN = -40, DIV_DOMAIN_MAX = 80, DIV_RANGE = DIV_DOMAIN_MAX - DIV_DOMAIN_MIN;
+    var ASSETS = [
+      { id: "divA", ret: 14, swing: 40 },
+      { id: "divB", ret: 12, swing: 20 },
+      { id: "divC", ret: 8, swing: 12 },
+      { id: "divD", ret: 7, swing: 2 }
+    ];
+    function pctOf(v) { return Math.max(0, Math.min(100, ((v - DIV_DOMAIN_MIN) / DIV_RANGE) * 100)); }
+    function setRange(fillId, tickId, worst, best) {
+      var left = pctOf(worst), right = pctOf(best);
+      var fill = document.getElementById(fillId), tick = document.getElementById(tickId);
+      fill.style.left = left + "%";
+      fill.style.width = Math.max(right - left, 0.5) + "%";
+      tick.style.left = right + "%";
+    }
+    function updateDiversify() {
+      var raw = ASSETS.map(function (a) { return parseFloat(document.getElementById(a.id).value) || 0; });
+      var sum = raw.reduce(function (a, b) { return a + b; }, 0);
+      var weights = sum > 0 ? raw.map(function (v) { return v / sum; }) : ASSETS.map(function () { return 1 / ASSETS.length; });
+      var pctIds = ["divAPct", "divBPct", "divCPct", "divDPct"];
+      weights.forEach(function (w, i) { document.getElementById(pctIds[i]).textContent = Math.round(w * 100) + "%"; });
+
+      var expected = 0, naiveSwing = 0, herfindahl = 0;
+      ASSETS.forEach(function (a, i) {
+        expected += weights[i] * a.ret;
+        naiveSwing += weights[i] * a.swing;
+        herfindahl += weights[i] * weights[i];
+      });
+      var swing = naiveSwing * Math.sqrt(herfindahl);
+      var best = expected + swing, worst = expected - swing;
+
+      document.getElementById("divExpected").textContent = (expected >= 0 ? "+" : "") + expected.toFixed(1) + "%";
+      document.getElementById("divWorst").textContent = (worst >= 0 ? "+" : "") + worst.toFixed(1) + "%";
+      document.getElementById("divBest").textContent = (best >= 0 ? "+" : "") + best.toFixed(1) + "%";
+      setRange("divPortfolioFill", "divPortfolioTick", worst, best);
+
+      var solo = ASSETS[0];
+      setRange("divSoloFill", "divSoloTick", solo.ret - solo.swing, solo.ret + solo.swing);
+    }
+    ASSETS.forEach(function (a) {
+      document.getElementById(a.id).addEventListener("input", updateDiversify);
+    });
+    updateDiversify();
+  }
+
+  /* ---- paper trade simulator (practice page) ---- */
+  var ptChart = document.getElementById("ptChart");
+  if (ptChart) {
+    var PT_PRICES = [100, 104, 102, 108, 112, 109, 115, 120, 118, 125, 122, 130, 126, 119, 108, 98, 105, 110, 116, 121];
+    var PT_MIN = Math.min.apply(null, PT_PRICES), PT_MAX = Math.max.apply(null, PT_PRICES);
+    var inrPT = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+    var ptState = { day: 1, qty: 0, avgPrice: 0, realized: 0, trades: [] };
+
+    function ptPrice() { return PT_PRICES[ptState.day - 1]; }
+
+    function ptDrawChart() {
+      var w = 600, h = 170, pad = 16;
+      function xFor(i) { return pad + (i / (PT_PRICES.length - 1)) * (w - 2 * pad); }
+      function yFor(p) { return h - pad - ((p - PT_MIN) / (PT_MAX - PT_MIN || 1)) * (h - 2 * pad); }
+      var pts = PT_PRICES.slice(0, ptState.day).map(function (p, i) { return xFor(i) + "," + yFor(p); }).join(" ");
+      var markers = ptState.trades.map(function (t) {
+        var color = t.type === "buy" ? "var(--accent)" : (t.pl >= 0 ? "var(--up)" : "var(--down)");
+        return '<circle cx="' + xFor(t.day - 1) + '" cy="' + yFor(t.price) + '" r="4.5" fill="' + color + '" stroke="var(--bg)" stroke-width="1.5"></circle>';
+      }).join("");
+      var current = '<circle cx="' + xFor(ptState.day - 1) + '" cy="' + yFor(ptPrice()) + '" r="5" fill="var(--ink)" stroke="var(--accent)" stroke-width="2"></circle>';
+      var label = "MINT price chart, day " + ptState.day + " of " + PT_PRICES.length + ", currently " + inrPT.format(ptPrice());
+      ptChart.innerHTML =
+        '<svg viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + label + '" style="width:100%; height:auto; overflow:visible;">' +
+        '<polyline points="' + pts + '" fill="none" stroke="var(--accent)" stroke-width="2"></polyline>' +
+        markers + current + "</svg>";
+    }
+
+    function ptRenderStats() {
+      var price = ptPrice();
+      var unreal = ptState.qty > 0 ? (price - ptState.avgPrice) * ptState.qty : 0;
+      var total = ptState.realized + unreal;
+      document.getElementById("ptDay").textContent = "Day " + ptState.day + " of " + PT_PRICES.length;
+      document.getElementById("ptPrice").textContent = inrPT.format(price);
+      document.getElementById("ptPosition").textContent = ptState.qty > 0
+        ? (ptState.qty + " shares @ " + inrPT.format(ptState.avgPrice))
+        : "No position";
+      document.getElementById("ptUnrealized").textContent = (unreal >= 0 ? "+" : "") + inrPT.format(unreal);
+      document.getElementById("ptRealized").textContent = (ptState.realized >= 0 ? "+" : "") + inrPT.format(ptState.realized);
+      document.getElementById("ptTotal").textContent = (total >= 0 ? "+" : "") + inrPT.format(total);
+      document.getElementById("ptBuyBtn").hidden = ptState.qty > 0;
+      document.getElementById("ptSellBtn").hidden = ptState.qty <= 0;
+      document.getElementById("ptNextBtn").disabled = ptState.day >= PT_PRICES.length;
+      document.getElementById("ptQty").disabled = ptState.qty > 0;
+    }
+
+    function ptRenderLog() {
+      var log = document.getElementById("ptLog");
+      if (ptState.trades.length === 0) {
+        log.innerHTML = '<li style="color:var(--muted); list-style:none; margin-left:-1.2em;">No trades yet — buy on any day to open a position.</li>';
+        return;
+      }
+      log.innerHTML = ptState.trades.slice().reverse().map(function (t) {
+        if (t.type === "buy") { return "<li>Day " + t.day + " — Bought " + t.qty + " @ " + inrPT.format(t.price) + "</li>"; }
+        return "<li>Day " + t.day + " — Sold " + t.qty + " @ " + inrPT.format(t.price) + " (" + (t.pl >= 0 ? "+" : "") + inrPT.format(t.pl) + ")</li>";
+      }).join("");
+    }
+
+    function ptRender() { ptDrawChart(); ptRenderStats(); ptRenderLog(); }
+
+    document.getElementById("ptBuyBtn").addEventListener("click", function () {
+      var qty = parseInt(document.getElementById("ptQty").value, 10) || 0;
+      if (qty <= 0 || ptState.qty > 0) { return; }
+      ptState.qty = qty;
+      ptState.avgPrice = ptPrice();
+      ptState.trades.push({ type: "buy", day: ptState.day, price: ptPrice(), qty: qty });
+      ptRender();
+    });
+    document.getElementById("ptSellBtn").addEventListener("click", function () {
+      if (ptState.qty <= 0) { return; }
+      var price = ptPrice();
+      var pl = (price - ptState.avgPrice) * ptState.qty;
+      ptState.realized += pl;
+      ptState.trades.push({ type: "sell", day: ptState.day, price: price, qty: ptState.qty, pl: pl });
+      ptState.qty = 0;
+      ptState.avgPrice = 0;
+      ptRender();
+    });
+    document.getElementById("ptNextBtn").addEventListener("click", function () {
+      if (ptState.day < PT_PRICES.length) { ptState.day++; ptRender(); }
+    });
+    document.getElementById("ptResetBtn").addEventListener("click", function () {
+      ptState = { day: 1, qty: 0, avgPrice: 0, realized: 0, trades: [] };
+      ptRender();
+    });
+    ptRender();
+  }
+
   /* ---- global contagion explorer (practice page) ---- */
   var captionBox = document.getElementById("contagionCaption");
   if (captionBox) {

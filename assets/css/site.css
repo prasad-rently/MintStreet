@@ -241,6 +241,28 @@ main > .wrap{display:flex; flex-direction:column; gap:3rem;}
 .caption-box h3{font-size:1.05rem; margin-bottom:.4em;}
 .caption-box p{font-size:.92rem; color:var(--muted); margin-bottom:0;}
 
+/* ---- range bar (diversification simulator) ---- */
+.range-track{position:relative; height:2.2rem; background:var(--surface-2); border-radius:8px; margin-bottom:.3rem; border:1px solid var(--line); overflow:visible;}
+.range-fill{position:absolute; top:0; bottom:0; background:var(--accent-soft); border-radius:4px;}
+.range-tick{position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--ink);}
+.range-row{margin-bottom:1.1rem;}
+.range-row .range-name{font-family:var(--mono); font-size:.74rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:.4em; display:block;}
+.range-scale{display:flex; justify-content:space-between; font-family:var(--mono); font-size:.68rem; color:var(--muted); margin-bottom:1.2rem;}
+.alloc-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:.9rem; margin-bottom:1.4rem;}
+@media (max-width:640px){ .alloc-grid{grid-template-columns:repeat(2,1fr);} }
+.alloc-field label{display:flex; justify-content:space-between; font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:.4em;}
+.alloc-field .swatch{width:.7em; height:.7em; border-radius:2px; display:inline-block; margin-right:.4em;}
+.alloc-field input[type="range"]{width:100%; accent-color:var(--accent);}
+.alloc-pct{font-family:var(--mono); color:var(--ink); font-weight:600;}
+
+/* ---- paper trade simulator ---- */
+.pt-controls{display:flex; align-items:end; gap:.8rem; flex-wrap:wrap; margin-bottom:1.2rem;}
+.pt-controls .field{max-width:120px;}
+.result-grid.pt-grid{grid-template-columns:repeat(4,1fr);}
+@media (max-width:640px){ .result-grid.pt-grid{grid-template-columns:repeat(2,1fr);} }
+#ptLog{font-size:.88rem; color:var(--ink); padding-left:1.2em; max-height:11rem; overflow-y:auto;}
+#ptLog li{margin-bottom:.3em;}
+
 /* ---- dispatch filter & search ---- */
 .filter-bar{display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; margin-bottom:-.6rem;}
 .search-field{position:relative; flex:1; min-width:220px;}
