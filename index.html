@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MintStreet — Story-First Financial Literacy</title>
+<meta name="description" content="Plain-English lessons on share markets, money markets, investing and trading — from Dalal Street to Wall Street — with interactive practice sheets.">
+<meta property="og:title" content="MintStreet">
+<meta property="og:description" content="Story-first financial literacy: how money works, what the stock market is, and how to actually place a trade.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<div class="ticker-outer" aria-label="Almanac of market history">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="10" width="3" height="7" rx="1" fill="var(--accent)"></rect>
+          <rect x="8.5" y="5" width="3" height="12" rx="1" fill="var(--accent)"></rect>
+          <rect x="15" y="1" width="3" height="16" rx="1" fill="var(--accent)"></rect>
+        </svg>
+      </span>
+      <span class="brand-name">MintStreet</span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="dispatches/index.html">Dispatches</a>
+      <a href="practice/index.html">Practice Sheets</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="wrap hero-wrap">
+      <span class="eyebrow">Markets · Money · The Long Compound</span>
+      <h1>From curious beginner to <span class="accent-text">confident investor</span></h1>
+      <p class="lede">A story-first walk through share markets, money markets, and investing — from the banyan tree that became Dalal Street to the Wall Street collapse that shook Tokyo, Seoul, and Mumbai in the same week.</p>
+      <div class="cta-row">
+        <a class="btn" href="dispatches/index.html">Read the dispatches →</a>
+        <a class="btn secondary" href="practice/index.html">🧮 Try a worksheet</a>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat"><span class="num tabular">4</span><span class="label">Core curriculum modules</span></div>
+      <div class="stat"><span class="num tabular">5</span><span class="label">Dispatches live</span></div>
+      <div class="stat"><span class="num tabular">1875</span><span class="label">BSE founded, Asia's oldest</span></div>
+      <div class="stat"><span class="num tabular">2008</span><span class="label">The crash that went global</span></div>
+    </div>
+
+    <div>
+      <div class="section-head section-intro" style="flex-direction:column; align-items:center; display:flex;">
+        <span class="eyebrow">The Tour</span>
+        <h2>Three ways into the market</h2>
+        <p>No prerequisites, no jargon left unexplained. Read the history, run the numbers, or jump straight to a topic.</p>
+      </div>
+      <div class="tour-grid">
+        <a class="tour-card" href="dispatches/index.html">
+          <div class="tour-num">1</div>
+          <h3>Dispatches</h3>
+          <p>Story-driven articles on market history, crashes, and how money actually works — India and the world, side by side.</p>
+          <span class="tour-link">Start reading →</span>
+        </a>
+        <a class="tour-card" href="practice/index.html">
+          <div class="tour-num">2</div>
+          <h3>Practice sheets</h3>
+          <p>A jargon quiz, live calculators for compounding and inflation, and an interactive map of the 2008 crash spreading market to market.</p>
+          <span class="tour-link">Start doing →</span>
+        </a>
+        <a class="tour-card" href="dispatches/index.html#curriculum">
+          <div class="tour-num">3</div>
+          <h3>The core curriculum</h3>
+          <p>How money works, what the stock market is, its fundamentals, and how a trade actually happens — four modules, start to finish.</p>
+          <span class="tour-link">See the modules →</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head"><h2>Latest dispatches</h2><span class="eyebrow">Updated regularly</span></div>
+      <div class="card-grid">
+        <a class="card" href="dispatches/how-money-works.html">
+          <div class="card-top"><span class="card-badge">🪙</span><span class="card-pill">6 min read</span></div>
+          <h3>How Money Works (And Why Printing More Won't Make Everyone Rich)</h3>
+          <p class="desc">Currency vs. wealth, a worked example of inflation, and why the RBI walks a tightrope between rising prices and a stalling economy.</p>
+          <div class="chip-row"><span class="chip c-history">Foundations</span><span class="chip c-money">Money Market</span></div>
+        </a>
+        <a class="card" href="dispatches/what-is-the-stock-market.html">
+          <div class="card-top"><span class="card-badge">🏛️</span><span class="card-pill">7 min read</span></div>
+          <h3>What Is the Stock Market, and Why Do We Need One?</h3>
+          <p class="desc">Banks already lend money — so why invent a whole second system? The 1602 Amsterdam origin story, and the pros and cons that followed.</p>
+          <div class="chip-row"><span class="chip c-history">History</span><span class="chip c-share">Share Market</span></div>
+        </a>
+        <a class="card" href="dispatches/the-night-wall-street-broke-the-world.html">
+          <div class="card-top"><span class="card-badge">🌐</span><span class="card-pill">7 min read</span></div>
+          <h3>The Night Wall Street Broke the World</h3>
+          <p class="desc">On September 15, 2008, Lehman Brothers collapsed in New York. By the next morning, the shockwave had reached Tokyo, Seoul, and Mumbai.</p>
+          <div class="chip-row"><span class="chip c-history">History</span><span class="chip c-global">Global</span></div>
+        </a>
+        <a class="card" href="dispatches/the-500-rupee-habit.html">
+          <div class="card-top"><span class="card-badge">🧮</span><span class="card-pill">5 min read</span></div>
+          <h3>The ₹500 Habit: How SIPs Turn Small Money into Big Money</h3>
+          <p class="desc">You don't need to time the market to build wealth in it. You need a habit, a little patience, and the quiet math of compounding.</p>
+          <div class="chip-row"><span class="chip c-invest">Investing</span><span class="chip c-share">India</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head"><h2>The three pillars</h2></div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-top"><span class="card-badge">📈</span><span class="card-pill">Pillar 01</span></div>
+          <h3>Share market</h3>
+          <p class="desc">What a share actually is, how exchanges match buyers and sellers, and how Dalal Street and Wall Street came to run the same idea differently.</p>
+          <div class="chip-row"><span class="chip c-share">Equities</span><span class="chip c-global">Exchanges</span></div>
+        </div>
+        <div class="card">
+          <div class="card-top"><span class="card-badge">🏦</span><span class="card-pill">Pillar 02</span></div>
+          <h3>Money market</h3>
+          <p class="desc">Bonds, T-bills, and fixed deposits — the quieter cousin of the stock market, where you lend instead of own.</p>
+          <div class="chip-row"><span class="chip c-money">Bonds</span><span class="chip c-money">Fixed income</span></div>
+        </div>
+        <div class="card">
+          <div class="card-top"><span class="card-badge">🧭</span><span class="card-pill">Pillar 03</span></div>
+          <h3>Investing &amp; trading</h3>
+          <p class="desc">SIPs, compounding, and the very different mindset that separates a long-term investor from a short-term trader.</p>
+          <div class="chip-row"><span class="chip c-invest">SIPs</span><span class="chip c-invest">Compounding</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-brand">MintStreet</span>
+    <nav aria-label="Footer">
+      <a href="dispatches/index.html">Dispatches</a>
+      <a href="practice/index.html">Practice Sheets</a>
+      <a href="https://github.com/prasad-rently/MintStreet">GitHub</a>
+    </nav>
+    <p>An educational project — a story-first primer on how markets work. Nothing on this page is investment, trading, or financial advice; markets carry real risk and past patterns never guarantee future results. New dispatches are added over time.</p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+/* MintStreet — shared site behavior.
+   Every block guards on the element existing, since not every page has
+   the ticker, the quiz, the calculator, or the contagion explorer. */
+(function () {
+  "use strict";
+
+  /* ---- ticker (every page) ---- */
+  var tickerTrack = document.getElementById("tickerTrack");
+  if (tickerTrack) {
+    var TICKER = [
+      { y: "1637", t: "Tulip bulb prices collapse in Amsterdam, ending the first recorded speculative bubble" },
+      { y: "1602", t: "The Dutch East India Company sells the first freely-tradable shares, founding the Amsterdam exchange" },
+      { y: "1875", t: "The Bombay Stock Exchange becomes Asia's oldest stock exchange" },
+      { y: "1929", t: "The Wall Street Crash wipes out a decade of gains in days" },
+      { y: "1994", t: "NSE launches as India's first fully electronic stock exchange" },
+      { y: "2008", t: "Lehman Brothers files for bankruptcy; markets from Tokyo to Mumbai fall within the week" },
+      { y: "2021", t: "Retail traders on Reddit force a short squeeze in GameStop stock" }
+    ];
+    var html = TICKER.map(function (i) {
+      return '<span class="ticker-item"><strong>' + i.y + "</strong> — " + i.t + "</span>";
+    }).join("");
+    tickerTrack.innerHTML = html + html;
+  }
+
+  /* ---- jargon buster quiz (practice page) ---- */
+  var quizMount = document.getElementById("quizMount");
+  if (quizMount) {
+    var QUIZ = [
+      { q: "What does a stock's P/E (Price-to-Earnings) ratio tell you?", opts: [
+        "How many years of profit it would take to earn back the share price at current earnings",
+        "The dividend paid per share",
+        "The company's total debt",
+        "The number of shares outstanding"
+      ], correct: 0, explain: "P/E = Share Price ÷ Earnings per Share. It's a rough gauge of how expensive a stock is relative to the profit it actually generates." },
+      { q: "What is ‘market capitalization’?", opts: [
+        "Total revenue of the company",
+        "Share price × total number of outstanding shares",
+        "The maximum price a stock can reach in a day",
+        "A government limit on how much a company can trade"
+      ], correct: 1, explain: "Market cap is the market's current price tag on the entire company — not its revenue or profit, just what all its shares are worth combined." },
+      { q: "A ‘bear market’ typically means...", opts: [
+        "Prices have fallen sharply and pessimism dominates",
+        "Trading has been paused for the day",
+        "Only large companies are being traded",
+        "Interest rates have dropped to zero"
+      ], correct: 0, explain: "Bear (falling, pessimistic) and bull (rising, optimistic) are the market's two standard moods — no official threshold, just the prevailing direction and mindset." },
+      { q: "A dividend is...", opts: [
+        "A fee brokers charge for buying a stock",
+        "A portion of company profit paid out to shareholders",
+        "A tax charged on stock purchases",
+        "The opening price of a stock each day"
+      ], correct: 1, explain: "Not every company pays one — many reinvest profits instead — but when they do, a dividend is your direct share of the profit, paid per share you own." },
+      { q: "IPO stands for...", opts: [
+        "Internal Profit Order",
+        "Investment Protection Option",
+        "Initial Public Offering — a company selling shares to the public for the first time",
+        "Index Price Objective"
+      ], correct: 2, explain: "Before an IPO, a company's shares are typically held privately by founders and early investors. An IPO is the moment it opens ownership to public markets." },
+      { q: "In a Systematic Investment Plan (SIP), you...", opts: [
+        "Invest a lump sum once, then never again",
+        "Invest a fixed amount at regular intervals, such as monthly",
+        "Only invest in physical gold",
+        "Borrow money specifically to invest in stocks"
+      ], correct: 1, explain: "SIPs automate discipline: the same amount, on the same date, regardless of what the market is doing that day." },
+      { q: "A mutual fund's NAV (Net Asset Value) is...", opts: [
+        "The fund manager's annual salary",
+        "The number of investors currently in the fund",
+        "The per-unit value of the fund's underlying holdings",
+        "A price ceiling set by the government"
+      ], correct: 2, explain: "NAV is simply the fund's total assets minus liabilities, divided by the number of units outstanding — what one unit of the fund is worth right now." },
+      { q: "Diversification means...", opts: [
+        "Putting all your money into one ‘sure thing’ stock",
+        "Spreading investments across different assets to reduce risk",
+        "Trading a stock multiple times in a single day",
+        "Only investing in companies from your own country"
+      ], correct: 1, explain: "The logic: if one investment performs badly, others may not — so the damage from any single bad outcome is limited." },
+      { q: "Intraday trading (MIS) means...", opts: [
+        "Buying shares and holding them for years",
+        "Buying and selling the same shares within the same trading day",
+        "Trading only during market holidays",
+        "A type of mutual fund"
+      ], correct: 1, explain: "Intraday positions are squared off the same day — you never actually take delivery of the shares into your demat account." },
+      { q: "An options contract's 'premium' is...", opts: [
+        "The full value of the underlying shares",
+        "A penalty for late payment",
+        "The price the option buyer pays for the right (not obligation) to buy or sell",
+        "The broker's annual membership fee"
+      ], correct: 2, explain: "The premium is the option buyer's maximum possible loss — walk away, and that's all it costs. The option seller takes on a much larger obligation in exchange for collecting it." }
+    ];
+
+    quizMount.innerHTML = QUIZ.map(function (item, qi) {
+      var opts = item.opts.map(function (o, oi) {
+        return '<label data-oi="' + oi + '"><input type="radio" name="q' + qi + '" value="' + oi + '"> <span>' + o + "</span></label>";
+      }).join("");
+      return '<div class="quiz-q" id="qwrap' + qi + '">' +
+        '<p class="qtext">' + (qi + 1) + ". " + item.q + "</p>" +
+        opts +
+        '<div class="qexplain">' + item.explain + "</div>" +
+        "</div>";
+    }).join("");
+
+    var checkBtn = document.getElementById("checkQuiz");
+    if (checkBtn) {
+      checkBtn.addEventListener("click", function () {
+        var score = 0;
+        QUIZ.forEach(function (item, qi) {
+          var wrap = document.getElementById("qwrap" + qi);
+          var selected = wrap.querySelector('input[name="q' + qi + '"]:checked');
+          wrap.classList.add("answered");
+          wrap.querySelectorAll("label").forEach(function (lab) {
+            lab.classList.remove("correct", "incorrect");
+            var oi = parseInt(lab.getAttribute("data-oi"), 10);
+            if (oi === item.correct) { lab.classList.add("correct"); }
+            else if (selected && parseInt(selected.value, 10) === oi) { lab.classList.add("incorrect"); }
+          });
+          if (selected && parseInt(selected.value, 10) === item.correct) { score++; }
+        });
+        var scoreBox = document.getElementById("quizScore");
+        scoreBox.hidden = false;
+        scoreBox.textContent = "Score: " + score + " / " + QUIZ.length;
+      });
+    }
+  }
+
+  /* ---- SIP compounding calculator (practice page) ---- */
+  var sipAmount = document.getElementById("sipAmount");
+  if (sipAmount) {
+    var inr = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+    function updateSip() {
+      var amt = parseFloat(document.getElementById("sipAmount").value) || 0;
+      var rate = parseFloat(document.getElementById("sipRate").value) || 0;
+      var years = parseFloat(document.getElementById("sipYears").value) || 0;
+      var n = Math.round(years * 12);
+      var i = rate / 12 / 100;
+      var fv;
+      if (i > 0) { fv = amt * (((Math.pow(1 + i, n) - 1)) / i) * (1 + i); }
+      else { fv = amt * n; }
+      var invested = amt * n;
+      var gain = Math.max(fv - invested, 0);
+      document.getElementById("outInvested").textContent = inr.format(invested);
+      document.getElementById("outGain").textContent = inr.format(gain);
+      document.getElementById("outMaturity").textContent = inr.format(invested + gain);
+      var total = invested + gain;
+      var investedPct = total > 0 ? (invested / total * 100) : 100;
+      document.getElementById("barInvested").style.width = investedPct + "%";
+      document.getElementById("barGain").style.width = (100 - investedPct) + "%";
+    }
+    ["sipAmount", "sipRate", "sipYears"].forEach(function (id) {
+      document.getElementById(id).addEventListener("input", updateSip);
+    });
+    updateSip();
+  }
+
+  /* ---- purchasing power ("Shrinking Rupee") calculator (practice page) ---- */
+  var ppAmount = document.getElementById("ppAmount");
+  if (ppAmount) {
+    var inr2 = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+    function updatePP() {
+      var amt = parseFloat(document.getElementById("ppAmount").value) || 0;
+      var rate = parseFloat(document.getElementById("ppRate").value) || 0;
+      var years = parseFloat(document.getElementById("ppYears").value) || 0;
+      var futureNominal = amt;
+      var realValue = amt / Math.pow(1 + rate / 100, years);
+      var lost = futureNominal - realValue;
+      document.getElementById("ppNominal").textContent = inr2.format(futureNominal);
+      document.getElementById("ppReal").textContent = inr2.format(realValue);
+      document.getElementById("ppLost").textContent = inr2.format(lost);
+      var lostPct = futureNominal > 0 ? (lost / futureNominal * 100) : 0;
+      document.getElementById("ppBarReal").style.width = (100 - lostPct) + "%";
+      document.getElementById("ppBarLost").style.width = lostPct + "%";
+    }
+    ["ppAmount", "ppRate", "ppYears"].forEach(function (id) {
+      document.getElementById(id).addEventListener("input", updatePP);
+    });
+    updatePP();
+  }
+
+  /* ---- global contagion explorer (practice page) ---- */
+  var captionBox = document.getElementById("contagionCaption");
+  if (captionBox) {
+    var CONTAGION = {
+      nyse: {
+        title: "Wall Street — NYSE, New York (the epicenter)",
+        text: "September 15, 2008 — Lehman Brothers files for bankruptcy. Credit markets freeze almost overnight as banks stop lending to each other, unsure who else is quietly holding the same toxic mortgage debt."
+      },
+      london: {
+        title: "London — FTSE 100",
+        text: "As a global banking hub with deep, direct ties to Wall Street, London felt the shock almost immediately. Domestic banks including RBS and HBOS came under severe strain, and the FTSE 100 fell alongside American markets in the very same trading sessions."
+      },
+      tokyo: {
+        title: "Tokyo — Nikkei 225",
+        text: "Japanese banks and major exporters were closely tied to U.S. financial firms and consumer demand. The Nikkei fell more than 11% in the days after Lehman's collapse — one of its steepest short-term drops in decades — as investors rushed toward safety."
+      },
+      seoul: {
+        title: "Seoul — KOSPI",
+        text: "South Korea's export-driven, foreign-capital-dependent market saw a sharp equity sell-off alongside a fall in the won, as global investors pulled dollars out of emerging Asia to cover losses elsewhere."
+      },
+      mumbai: {
+        title: "Mumbai — Sensex",
+        text: "Foreign Institutional Investors, who had poured money into Indian equities through the earlier boom years, reversed course — selling Indian shares to raise cash for problems back home. The Sensex fell further, and the rupee weakened against the dollar as capital left."
+      }
+    };
+    function renderCaption(key) {
+      var c = CONTAGION[key];
+      captionBox.innerHTML = "<h3>" + c.title + "</h3><p>" + c.text + "</p>";
+    }
+    function selectNode(key) {
+      document.querySelectorAll(".node").forEach(function (g) {
+        var isSel = g.getAttribute("data-node") === key;
+        g.querySelector(".node-dot").classList.toggle("active", isSel);
+        g.setAttribute("aria-pressed", isSel ? "true" : "false");
+      });
+      ["tokyo", "seoul", "mumbai", "london"].forEach(function (k) {
+        var line = document.getElementById("line-" + k);
+        if (line) { line.classList.toggle("active", key === "nyse" || key === k); }
+      });
+      renderCaption(key);
+    }
+    document.querySelectorAll(".node").forEach(function (g) {
+      g.addEventListener("click", function () { selectNode(g.getAttribute("data-node")); });
+      g.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectNode(g.getAttribute("data-node")); }
+      });
+    });
+    selectNode("nyse");
+  }
+})();

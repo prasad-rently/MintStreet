@@ -1,0 +1,66 @@
+/* MintStreet design tokens — shared across every page.
+   Light palette lives on bare :root; dark overrides the same names,
+   guarded so an explicit [data-theme] always wins over system preference. */
+
+:root {
+  --bg: #F5F7F6;
+  --surface: #FFFFFF;
+  --surface-2: #EAF0EC;
+  --ink: #0F1613;
+  --muted: #5B655F;
+  --line: #DCE4DE;
+  --accent: #0E8F63;
+  --accent-soft: #E1F3E9;
+  --link: #0B7350;
+  --on-accent: #F5F7F6;
+  --blue: #1D5FA0;
+  --amber: #A5720C;
+  --violet: #6A54C9;
+  --up: #0E8F63;
+  --down: #B23B3B;
+  --focus: #1D5FA0;
+
+  --display: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B0F0D;
+    --surface: #141A17;
+    --surface-2: #1B2420;
+    --ink: #ECEFEC;
+    --muted: #8B958F;
+    --line: #232B27;
+    --accent: #3DDC97;
+    --accent-soft: #16261F;
+    --link: #3DDC97;
+    --on-accent: #04140D;
+    --blue: #5FA8EE;
+    --amber: #E0A93A;
+    --violet: #A78BFA;
+    --up: #3DDC97;
+    --down: #E2726B;
+    --focus: #5FA8EE;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0B0F0D;
+  --surface: #141A17;
+  --surface-2: #1B2420;
+  --ink: #ECEFEC;
+  --muted: #8B958F;
+  --line: #232B27;
+  --accent: #3DDC97;
+  --accent-soft: #16261F;
+  --link: #3DDC97;
+  --on-accent: #04140D;
+  --blue: #5FA8EE;
+  --amber: #E0A93A;
+  --violet: #A78BFA;
+  --up: #3DDC97;
+  --down: #E2726B;
+  --focus: #5FA8EE;
+}

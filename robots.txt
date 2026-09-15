@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prasad-rently.github.io/MintStreet/sitemap.xml

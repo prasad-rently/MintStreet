@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Sheets — MintStreet</title>
+<meta name="description" content="A jargon quiz, an inflation calculator, a SIP compounding calculator, and an interactive map of the 2008 financial contagion — learn markets by doing.">
+<meta property="og:title" content="Practice Sheets — MintStreet">
+<meta property="og:description" content="Learn by doing: a jargon quiz, live calculators, and an interactive map of the 2008 crash spreading market to market.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/practice/">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/practice/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<div class="ticker-outer" aria-label="Almanac of market history">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="10" width="3" height="7" rx="1" fill="var(--accent)"></rect>
+          <rect x="8.5" y="5" width="3" height="12" rx="1" fill="var(--accent)"></rect>
+          <rect x="15" y="1" width="3" height="16" rx="1" fill="var(--accent)"></rect>
+        </svg>
+      </span>
+      <span class="brand-name">MintStreet</span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../dispatches/index.html">Dispatches</a>
+      <a href="index.html" aria-current="page">Practice Sheets</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="section-head"><h1 style="font-size:1.8rem; margin:0;">Practice sheets</h1><span class="eyebrow">Learn by doing</span></div>
+
+    <div class="sheet-card" id="jargon-quiz">
+      <div class="sheet-head"><span class="card-badge">🔤</span><h2>The Jargon Buster Quiz</h2><span class="card-pill">▶ interactive</span></div>
+      <p class="lede">Ten terms from Module 3. Pick an answer to see if you've got it.</p>
+      <div id="quizMount"></div>
+      <div class="quiz-score" id="quizScore" hidden></div>
+      <button class="btn" id="checkQuiz">Check my answers</button>
+    </div>
+
+    <div class="sheet-card" id="shrinking-rupee">
+      <div class="sheet-head"><span class="card-badge">🫧</span><h2>The Shrinking Rupee</h2><span class="card-pill">▶ interactive</span></div>
+      <p class="lede">From Module 1: see how much of an amount's real buying power inflation erodes over time.</p>
+      <div class="calc-grid">
+        <div class="field">
+          <label for="ppAmount">Amount today (₹)</label>
+          <input type="number" id="ppAmount" value="100000" min="0" step="1000">
+        </div>
+        <div class="field">
+          <label for="ppRate">Assumed inflation (%/yr)</label>
+          <input type="number" id="ppRate" value="6" min="0" max="30" step=".5">
+        </div>
+        <div class="field">
+          <label for="ppYears">Years from now</label>
+          <input type="number" id="ppYears" value="10" min="1" max="40" step="1">
+        </div>
+      </div>
+      <div class="bar-wrap" aria-hidden="true">
+        <div class="bar-invested" id="ppBarReal"></div>
+        <div class="bar-gain" id="ppBarLost" style="background:var(--down);"></div>
+      </div>
+      <div class="bar-legend">
+        <span><span class="swatch" style="background:var(--muted)"></span> Real buying power left</span>
+        <span><span class="swatch" style="background:var(--down)"></span> Lost to inflation</span>
+      </div>
+      <div class="result-grid">
+        <div class="result"><span class="eyebrow">Nominal amount</span><span class="val tabular" id="ppNominal">—</span></div>
+        <div class="result"><span class="eyebrow">Real value today's-terms</span><span class="val tabular" id="ppReal">—</span></div>
+        <div class="result"><span class="eyebrow">Purchasing power lost</span><span class="val tabular" id="ppLost">—</span></div>
+      </div>
+      <p class="disclaimer">Illustrative only, assuming a constant inflation rate — real inflation varies year to year. The rupee amount doesn't shrink; what shrinks is how much it can actually buy.</p>
+    </div>
+
+    <div class="sheet-card" id="sip-calculator">
+      <div class="sheet-head"><span class="card-badge">🧮</span><h2>The SIP Compounding Calculator</h2><span class="card-pill">▶ interactive</span></div>
+      <p class="lede">See how a monthly habit turns into a maturity value. Change the numbers — it recalculates as you type.</p>
+      <div class="calc-grid">
+        <div class="field">
+          <label for="sipAmount">Monthly investment (₹)</label>
+          <input type="number" id="sipAmount" value="5000" min="100" step="100">
+        </div>
+        <div class="field">
+          <label for="sipRate">Expected annual return (%)</label>
+          <input type="number" id="sipRate" value="12" min="0" max="30" step=".5">
+        </div>
+        <div class="field">
+          <label for="sipYears">Investment period (years)</label>
+          <input type="number" id="sipYears" value="15" min="1" max="40" step="1">
+        </div>
+      </div>
+      <div class="bar-wrap" aria-hidden="true">
+        <div class="bar-invested" id="barInvested"></div>
+        <div class="bar-gain" id="barGain"></div>
+      </div>
+      <div class="bar-legend">
+        <span><span class="swatch" style="background:var(--muted)"></span> Total invested</span>
+        <span><span class="swatch" style="background:var(--up)"></span> Estimated gains</span>
+      </div>
+      <div class="result-grid">
+        <div class="result"><span class="eyebrow">Total invested</span><span class="val tabular" id="outInvested">—</span></div>
+        <div class="result gain"><span class="eyebrow">Estimated gains</span><span class="val tabular" id="outGain">—</span></div>
+        <div class="result"><span class="eyebrow">Maturity value</span><span class="val tabular" id="outMaturity">—</span></div>
+      </div>
+      <p class="disclaimer">Illustrative only. Mutual fund and equity returns fluctuate and are never guaranteed — this calculator assumes a constant annual return purely to show how compounding works, not to predict real results. Nothing here is investment advice.</p>
+    </div>
+
+    <div class="sheet-card" id="contagion">
+      <div class="sheet-head"><span class="card-badge">🌐</span><h2>The Global Contagion Explorer</h2><span class="card-pill">▶ interactive</span></div>
+      <p class="lede">Click a market to see how the shockwave from Lehman Brothers' collapse on September 15, 2008 reached it within days.</p>
+      <div class="contagion-layout">
+        <svg class="contagion-svg" viewBox="0 0 760 380" role="group" aria-label="Diagram of 2008 financial contagion spreading from Wall Street">
+          <path class="link-line" id="line-tokyo" d="M170,150 Q 430,70 690,300"></path>
+          <path class="link-line" id="line-seoul" d="M170,150 Q 420,140 610,240"></path>
+          <path class="link-line" id="line-mumbai" d="M170,150 Q 260,220 340,320"></path>
+          <path class="link-line" id="line-london" d="M170,150 Q 300,60 430,90"></path>
+
+          <g class="node" data-node="nyse" tabindex="0" role="button" aria-pressed="true">
+            <circle class="node-dot epicenter active" cx="170" cy="150" r="26"></circle>
+            <text class="node-label" x="170" y="196" text-anchor="middle">Wall Street</text>
+            <text class="node-sub" x="170" y="209" text-anchor="middle">NYSE, New York</text>
+          </g>
+          <g class="node" data-node="london" tabindex="0" role="button" aria-pressed="false">
+            <circle class="node-dot" cx="430" cy="90" r="22"></circle>
+            <text class="node-label" x="430" y="132" text-anchor="middle">London</text>
+            <text class="node-sub" x="430" y="145" text-anchor="middle">FTSE 100</text>
+          </g>
+          <g class="node" data-node="seoul" tabindex="0" role="button" aria-pressed="false">
+            <circle class="node-dot" cx="610" cy="240" r="22"></circle>
+            <text class="node-label" x="610" y="282" text-anchor="middle">Seoul</text>
+            <text class="node-sub" x="610" y="295" text-anchor="middle">KOSPI</text>
+          </g>
+          <g class="node" data-node="tokyo" tabindex="0" role="button" aria-pressed="false">
+            <circle class="node-dot" cx="690" cy="300" r="22"></circle>
+            <text class="node-label" x="690" y="342" text-anchor="middle">Tokyo</text>
+            <text class="node-sub" x="690" y="355" text-anchor="middle">Nikkei 225</text>
+          </g>
+          <g class="node" data-node="mumbai" tabindex="0" role="button" aria-pressed="false">
+            <circle class="node-dot" cx="340" cy="320" r="22"></circle>
+            <text class="node-label" x="340" y="362" text-anchor="middle">Mumbai</text>
+            <text class="node-sub" x="340" y="375" text-anchor="middle">Sensex</text>
+          </g>
+        </svg>
+        <div class="caption-box" id="contagionCaption"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-brand">MintStreet</span>
+    <nav aria-label="Footer">
+      <a href="../index.html">Home</a>
+      <a href="../dispatches/index.html">Dispatches</a>
+      <a href="https://github.com/prasad-rently/MintStreet">GitHub</a>
+    </nav>
+    <p>An educational project — a story-first primer on how markets work. Nothing on this page is investment, trading, or financial advice; markets carry real risk and past patterns never guarantee future results.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
