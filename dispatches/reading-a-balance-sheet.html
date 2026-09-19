@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading a Balance Sheet Without Fainting — MintStreet</title>
+<meta name="description" content="One equation explains every row on a balance sheet. Assets, liabilities, equity, and the handful of ratios investors actually pull from them — in plain English.">
+<meta property="og:title" content="Reading a Balance Sheet Without Fainting">
+<meta property="og:description" content="Rows of intimidating numbers, answering exactly one question: what does the company own, what does it owe, and what's left over?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/dispatches/reading-a-balance-sheet.html">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/dispatches/reading-a-balance-sheet.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<div class="ticker-outer" aria-label="Almanac of market history">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="10" width="3" height="7" rx="1" fill="var(--accent)"></rect>
+          <rect x="8.5" y="5" width="3" height="12" rx="1" fill="var(--accent)"></rect>
+          <rect x="15" y="1" width="3" height="16" rx="1" fill="var(--accent)"></rect>
+        </svg>
+      </span>
+      <span class="brand-name">MintStreet</span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="index.html" aria-current="page">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="max-width:760px;">
+    <a class="back-link" href="index.html">← Back to all dispatches</a>
+    <article class="post-article">
+      <header>
+        <div class="chip-row"><span class="chip c-invest">Investing</span><span class="chip c-share">Share Market</span></div>
+        <h1>Reading a Balance Sheet Without Fainting</h1>
+        <p class="dek">Rows of dense, jargon-heavy numbers that look designed to be skipped. Underneath, every single one is answering exactly one question.</p>
+        <div class="byline">6 min read · Supplementary dispatch</div>
+      </header>
+
+      <p>That question is: on this exact date, what does the company own, what does it owe, and what's actually left over for the people who own it? A balance sheet is a snapshot, not a story over time — it describes one specific moment, the way a photo of your wallet's contents describes right now, not your spending habits over the year.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">The one equation everything rests on</h2>
+      <p>Assets = Liabilities + Equity. That's the whole thing. It's called a <em>balance</em> sheet because both sides must literally balance — and not by coincidence. Equity isn't measured independently; it's <em>defined</em> as whatever is left over once you subtract what's owed (liabilities) from what's owned (assets). Know any two of the three, and the equation hands you the third for free.</p>
+      <p>Picture a small bakery to make it concrete. It owns an oven, some flour, and a little cash in the till — those are its assets. It owes its flour supplier for last month's delivery and still has a bit of a bank loan outstanding — those are its liabilities. Whatever value is left once those debts are covered technically belongs to whoever owns the bakery — that's equity. A public company works exactly the same way, just with far more rows; your share of that leftover equity, divided across every share outstanding, is the <a href="stock-market-fundamentals.html">book value</a> Module 3 already introduced.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">What's on the assets side</h2>
+      <dl class="term-list">
+        <div class="term"><dt>Current assets</dt><dd>Cash, inventory, and money customers owe the company — anything expected to turn into cash within about a year.</dd></div>
+        <div class="term"><dt>Non-current assets</dt><dd>Property, equipment, long-term investments, and brand value — things held and used for years, not sold off quickly.</dd></div>
+      </dl>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">What's on the liabilities side</h2>
+      <dl class="term-list">
+        <div class="term"><dt>Current liabilities</dt><dd>Bills due soon and short-term borrowings — obligations coming due within about a year.</dd></div>
+        <div class="term"><dt>Non-current liabilities</dt><dd>Long-term loans and, notably, any bonds the company has issued. The exact instrument <a href="bonds-101.html">Bonds 101</a> described as an asset from the bondholder's side shows up here, on the company's own balance sheet, as a liability — same contract, opposite side of the page.</dd></div>
+      </dl>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">What's left: equity</h2>
+      <p>Shareholders' equity itself splits into two familiar pieces: <strong>share capital</strong> (the money originally raised by selling shares) and <strong>reserves &amp; surplus</strong> — accumulated profit the company chose to keep and reinvest rather than pay out as dividends, year after year. Think of reserves as the company's own savings account, built up one retained profit at a time.</p>
+
+      <div class="callout">
+        <p><strong>A practical orientation tip:</strong> Indian companies file their balance sheets in a standardized layout called Schedule III, under the Companies Act, 2013. Once you've seen one, you've effectively seen the skeleton of every listed Indian company's balance sheet — but Schedule III lists Equity and Liabilities <em>before</em> Assets, the reverse of the order many global textbooks use. Don't let that reordering throw you; it's the same equation, just read top to bottom instead of left to right.</p>
+      </div>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">What investors actually pull from it</h2>
+      <dl class="term-list">
+        <div class="term"><dt>Book value</dt><dd>Total equity ÷ number of shares — read almost directly off this one statement.</dd></div>
+        <div class="term"><dt>Debt-to-equity ratio</dt><dd>Total debt ÷ equity — a rough gauge of how much of the company runs on borrowed money versus owners' money. A heavily leveraged company can look perfectly fine in good years and become fragile fast the moment revenue dips — the same leverage lesson the <a href="the-1929-crash-and-the-great-depression.html">1929 crash</a> taught the hard way, just on a company's books instead of a trading account.</dd></div>
+        <div class="term"><dt>Current ratio</dt><dd>Current assets ÷ current liabilities — a quick check on whether the company can cover what it owes in the near term without scrambling.</dd></div>
+      </dl>
+
+      <p>None of this makes the balance sheet simple, exactly — a real one runs to dozens of line items with their own footnotes. But it stops being intimidating once you see it for what it is: one equation, split into two familiar categories on each side, dressed up in more detail than most people ever bother to unpack.</p>
+
+      <div class="next-post">
+        <span class="eyebrow">Continue reading</span>
+        <a href="index.html">All dispatches →</a>
+      </div>
+
+      <div class="discussion-section">
+        <h2>Discussion</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="prasad-rently/MintStreet"
+                data-repo-id="R_kgDOUbsB4g"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOUbsB4s4DF9Fu"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="preferred_color_scheme"
+                data-lang="en"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-brand">MintStreet</span>
+    <nav aria-label="Footer">
+      <a href="../index.html">Home</a>
+      <a href="index.html">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+    <p>An educational project — a story-first primer on how markets work. Nothing on this page is investment, trading, or financial advice.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
