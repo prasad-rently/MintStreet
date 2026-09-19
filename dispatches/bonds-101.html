@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bonds 101: Lending Your Way to Interest — MintStreet</title>
+<meta name="description" content="What a bond actually is, why its price moves opposite to interest rates, and why Venice was doing this 340 years before the first tradable share existed.">
+<meta property="og:title" content="Bonds 101: Lending Your Way to Interest">
+<meta property="og:description" content="The money market's oldest trick: lend money, get a fixed schedule of interest back. Here's exactly how, and the one mechanic that trips up almost everyone.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/dispatches/bonds-101.html">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/dispatches/bonds-101.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<div class="ticker-outer" aria-label="Almanac of market history">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="10" width="3" height="7" rx="1" fill="var(--accent)"></rect>
+          <rect x="8.5" y="5" width="3" height="12" rx="1" fill="var(--accent)"></rect>
+          <rect x="15" y="1" width="3" height="16" rx="1" fill="var(--accent)"></rect>
+        </svg>
+      </span>
+      <span class="brand-name">MintStreet</span>
+    </a>
+    <nav class="mainnav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="index.html" aria-current="page">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="max-width:760px;">
+    <a class="back-link" href="index.html">← Back to all dispatches</a>
+    <article class="post-article">
+      <header>
+        <div class="chip-row"><span class="chip c-money">Money Market</span><span class="chip c-history">History</span></div>
+        <h1>Bonds 101: Lending Your Way to Interest</h1>
+        <p class="dek">The money market's oldest trick: lend money, get a fixed schedule of interest back. Simple in principle — until one counterintuitive mechanic trips up almost everyone the first time they meet it.</p>
+        <div class="byline">6 min read · Supplementary dispatch</div>
+      </header>
+
+      <p>Module 2 traced the stock market back to Amsterdam in 1602. Bonds got there first — by 340 years. In 1262, the Republic of Venice consolidated its various forced war loans from wealthy citizens into a single, structured obligation called a <em>prestiti</em>, paying 5% interest. Citizens had already been lending the state money whether they liked it or not; Venice's innovation was turning that into something orderly, with a fixed rate — and, notably, something citizens could sell to each other on a secondary market rather than being stuck holding it. That's a bond, in essence, nearly seven centuries before the word existed in its modern form.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">What a bond actually is</h2>
+      <p>Remember the debt-versus-equity split from Module 2: a share makes you a part-owner, sharing in the upside and the downside. A bond makes you a lender, full stop. Buy a bond issued by a government or a company, and you're owed a fixed schedule of payments back — interest along the way, and your original amount at the end — regardless of how spectacularly well the issuer's business happens to do in the meantime. No upside beyond what was promised, but also none of the equity holder's risk of walking away with nothing.</p>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">The anatomy of a bond</h2>
+      <dl class="term-list">
+        <div class="term"><dt>Face value</dt><dd>The amount you're repaid when the bond matures — and the base amount interest is calculated on.</dd></div>
+        <div class="term"><dt>Coupon</dt><dd>The fixed interest rate paid periodically, named for the literal paper coupons old bondholders used to physically tear off and redeem.</dd></div>
+        <div class="term"><dt>Maturity date</dt><dd>The date the issuer must return the face value in full.</dd></div>
+        <div class="term"><dt>Yield / YTM</dt><dd>Your actual return accounting for what you paid for the bond — which can differ from face value — not just the coupon rate printed on it.</dd></div>
+        <div class="term"><dt>Credit rating</dt><dd>An assessment (in India, CRISIL's scale runs from AAA down to D) of how likely the issuer actually is to pay you back. Riskier issuers must offer a higher coupon to get anyone to lend to them at all — the same risk-reward trade this entire site keeps circling back to.</dd></div>
+      </dl>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">The mechanic that trips almost everyone up</h2>
+      <p>Here's the one rule worth remembering above all others: <strong>bond prices move opposite to interest rates.</strong> Say you buy a bond paying a 6% coupon, right when 6% is the going rate. Then the <a href="the-rbi-explained.html">RBI raises the repo rate</a>, and new bonds start being issued at 7%. Nobody wants to pay full price for your old 6% bond anymore when a fresh 7% one is available — so if you need to sell before maturity, you have to accept a lower price, one that makes your bond's effective yield competitive with the new going rate. Cut rates instead, and the same logic runs in reverse: your older, higher-coupon bond suddenly looks attractive, and its resale price rises above what you paid.</p>
+      <p>The crucial escape hatch: none of this matters if you hold the bond to maturity. Rate swings only affect what you'd get selling early on the open market. Hold on until the maturity date, and you receive exactly what was promised at the start — the face value, plus every coupon along the way — regardless of what interest rates did in between.</p>
+
+      <div class="callout">
+        <p><strong>See the numbers:</strong> the <a href="../practice/index.html#bond-vs-fd">Bond vs. Fixed Deposit</a> worksheet on the Practice Sheets page runs this exact comparison — hold-to-maturity coupons against a compounding FD — with your own numbers.</p>
+      </div>
+
+      <h2 style="font-size:1.3rem; margin-top:1.6rem;">Bonds in India, concretely</h2>
+      <p>Government securities (G-Secs) are debt issued by the Central or State government, typically for 5 to 40 years, and are about as close to a risk-free rupee-denominated instrument as exists — a sovereign default is exceptionally rare. Individuals can now buy them directly through the RBI's Retail Direct platform, no broker required. Corporate bonds sit further along the risk spectrum: higher yields to compensate for real default risk, priced and rated accordingly on that CRISIL AAA-to-D scale.</p>
+
+      <p>None of this is as exciting as a stock chart, and that's the entire point. A bond's appeal isn't upside — it's certainty: know the coupon, know the maturity date, know exactly what you're owed and when. In a curriculum that keeps insisting investing means accepting real risk, a bond is the closest thing to an exception, and only for as long as you're willing to wait it out.</p>
+
+      <div class="next-post">
+        <span class="eyebrow">Continue reading</span>
+        <a href="index.html">All dispatches →</a>
+      </div>
+
+      <div class="discussion-section">
+        <h2>Discussion</h2>
+        <script src="https://giscus.app/client.js"
+                data-repo="prasad-rently/MintStreet"
+                data-repo-id="R_kgDOUbsB4g"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOUbsB4s4DF9Fu"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="preferred_color_scheme"
+                data-lang="en"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="foot-brand">MintStreet</span>
+    <nav aria-label="Footer">
+      <a href="../index.html">Home</a>
+      <a href="index.html">Dispatches</a>
+      <a href="../practice/index.html">Practice Sheets</a>
+    </nav>
+    <p>An educational project — a story-first primer on how markets work. Nothing on this page is investment, trading, or financial advice.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
