@@ -123,9 +123,17 @@ main > .wrap{display:flex; flex-direction:column; gap:3rem;}
 .card-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; }
 @media (max-width:760px){ .card-grid{grid-template-columns:1fr;} }
 .card{
+  position:relative;
   background:var(--surface); border:1px solid var(--line); border-radius:14px;
   padding:1.4rem 1.4rem 1.3rem; display:flex; flex-direction:column; gap:.7rem;
   text-align:left; width:100%; text-decoration:none;
+}
+.card-pill.is-read{color:var(--up); background:var(--accent-soft);}
+.card-pill.is-read::before{content:"✓ ";}
+.progress-pill{
+  font-family:var(--mono); font-size:.72rem; color:var(--muted);
+  background:var(--surface); border:1px solid var(--line); border-radius:999px;
+  padding:.35em .8em; display:inline-block;
 }
 .card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:.8rem;}
 .card-badge{
@@ -296,6 +304,9 @@ caption{text-align:left; font-family:var(--mono); font-size:.75rem; color:var(--
 th,td{text-align:left; padding:.65em .8em; border-bottom:1px solid var(--line); vertical-align:top;}
 th{font-family:var(--mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:600;}
 tr:last-child td{border-bottom:none;}
+
+.discussion-section{border-top:1px solid var(--line); margin-top:2rem; padding-top:1.6rem;}
+.discussion-section h2{font-size:1.1rem; margin-bottom:1rem; font-family:var(--display);}
 
 footer{border-top:1px solid var(--line); padding-block:1.8rem 2.5rem; margin-top:1rem;}
 footer .wrap{display:flex; flex-direction:column; gap:.4rem; align-items:center; text-align:center;}

@@ -4,6 +4,63 @@
 (function () {
   "use strict";
 
+  /* ---- reading progress & practice days (local to this browser, no account needed) ---- */
+  (function () {
+    function readJSON(key) {
+      try {
+        var raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) { return []; }
+    }
+    function writeJSON(key, val) {
+      try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { /* private mode etc. */ }
+    }
+
+    // Mark this dispatch as read, if this is a dispatch article page.
+    if (document.querySelector(".post-article")) {
+      var readList = readJSON("mintstreet_read_dispatches");
+      var page = location.pathname.split("/").pop() || "index.html";
+      if (readList.indexOf(page) === -1) {
+        readList.push(page);
+        writeJSON("mintstreet_read_dispatches", readList);
+      }
+    }
+
+    // On the dispatches index, show progress and tick off read cards.
+    var progressEl = document.getElementById("readProgress");
+    if (progressEl) {
+      var readSet = readJSON("mintstreet_read_dispatches");
+      var cards = document.querySelectorAll(".card[data-tags]");
+      var readCount = 0;
+      cards.forEach(function (card) {
+        var href = card.getAttribute("href");
+        if (readSet.indexOf(href) !== -1) {
+          readCount++;
+          var pill = card.querySelector(".card-pill");
+          if (pill) { pill.classList.add("is-read"); }
+        }
+      });
+      if (readCount > 0) {
+        progressEl.textContent = readCount + " / " + cards.length + " read";
+      }
+    }
+
+    // On the Practice Sheets page, log today's visit as a distinct "practice day".
+    var practiceDaysEl = document.getElementById("practiceDays");
+    if (practiceDaysEl) {
+      var today = new Date().toISOString().slice(0, 10);
+      var days = readJSON("mintstreet_practice_days");
+      if (days.indexOf(today) === -1) {
+        days.push(today);
+        writeJSON("mintstreet_practice_days", days);
+      }
+      if (days.length > 0) {
+        practiceDaysEl.hidden = false;
+        practiceDaysEl.textContent = "🗓️ " + days.length + (days.length === 1 ? " day" : " days") + " of practice logged";
+      }
+    }
+  })();
+
   /* ---- ticker (every page) ---- */
   var tickerTrack = document.getElementById("tickerTrack");
   if (tickerTrack) {
