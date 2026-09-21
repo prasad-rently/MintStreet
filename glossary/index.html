@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stock Market Fundamentals — MintStreet</title>
-<meta name="description" content="Every stock market term, defined in one plain sentence, grouped the way a beginner actually encounters them. Module 3 of the MintStreet core curriculum.">
-<meta property="og:title" content="Stock Market Fundamentals: Every Term, Simply Explained">
-<meta property="og:description" content="A complete, categorized glossary — one plain sentence per term, from 'share' to 'circuit breaker.'">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/dispatches/stock-market-fundamentals.html">
+<title>Glossary — MintStreet</title>
+<meta name="description" content="Every market term MintStreet uses, in one searchable, filterable reference — one plain sentence per term, from 'share' to 'T+1 settlement.'">
+<meta property="og:title" content="Glossary — MintStreet">
+<meta property="og:description" content="Every market term MintStreet uses, searchable and filterable, one plain sentence per term.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prasad-rently.github.io/MintStreet/glossary/">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/dispatches/stock-market-fundamentals.html">
+<link rel="canonical" href="https://prasad-rently.github.io/MintStreet/glossary/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,27 +37,41 @@
     </a>
     <nav class="mainnav" aria-label="Main">
       <a href="../index.html">Home</a>
-      <a href="index.html" aria-current="page">Dispatches</a>
+      <a href="../dispatches/index.html">Dispatches</a>
       <a href="../practice/index.html">Practice Sheets</a>
-      <a href="../glossary/index.html">Glossary</a>
+      <a href="index.html" aria-current="page">Glossary</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <div class="wrap" style="max-width:760px;">
-    <a class="back-link" href="index.html">← Back to all dispatches</a>
-    <article class="post-article">
-      <header>
-        <div class="chip-row"><span class="chip c-share">Module 3</span><span class="chip">Terminology</span></div>
-        <h1>Stock Market Fundamentals: Every Term, Simply Explained</h1>
-        <p class="dek">No definition longer than a sentence. Read it top to bottom once, then come back to it as a reference whenever a dispatch uses a word you've half-forgotten.</p>
-        <div class="byline">8 min read · Core Curriculum, Module 3 of 4</div>
-      </header>
+  <div class="wrap">
 
-      <p>Every field has its own vocabulary, and the stock market's can feel deliberately intimidating — it isn't. Almost every term below describes something you already understand intuitively, just wearing a finance costume. Here's the full undressing, grouped the way you'll actually run into these words.</p>
+    <div class="section-head"><h1 style="font-size:1.8rem; margin:0;">Glossary</h1><span class="progress-pill" id="glossaryCount">56 terms</span></div>
+    <p style="margin-top:.6rem;">Every market term used across MintStreet's dispatches and curriculum, in one place — one plain sentence per term, no exceptions. Search for a word, or filter by category.</p>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">The basics</h2>
+    <div class="filter-bar">
+      <div class="search-field">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="glossarySearch" placeholder="Search terms…" aria-label="Search glossary">
+      </div>
+      <div class="filter-chips" id="glossaryChips" role="group" aria-label="Filter by category">
+        <button class="filter-chip" data-cat="all" aria-pressed="true">All</button>
+        <button class="filter-chip" data-cat="basics" aria-pressed="false">Basics</button>
+        <button class="filter-chip" data-cat="price" aria-pressed="false">Price &amp; Value</button>
+        <button class="filter-chip" data-cat="orders" aria-pressed="false">Orders &amp; Trading</button>
+        <button class="filter-chip" data-cat="indices" aria-pressed="false">Indices</button>
+        <button class="filter-chip" data-cat="participants" aria-pressed="false">Participants</button>
+        <button class="filter-chip" data-cat="corporate" aria-pressed="false">Corporate Actions</button>
+        <button class="filter-chip" data-cat="mood" aria-pressed="false">Market Mood</button>
+        <button class="filter-chip" data-cat="derivatives" aria-pressed="false">Trade Types &amp; Derivatives</button>
+        <button class="filter-chip" data-cat="settlement" aria-pressed="false">Settlement &amp; Regulation</button>
+      </div>
+    </div>
+    <p class="no-results" id="glossaryNoResults">No terms match that search and filter combination — try clearing one of them.</p>
+
+    <section class="glossary-group" data-category="basics">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">The basics</h2>
       <dl class="term-list">
         <div class="term"><dt>Share</dt><dd>One unit of ownership in a company. Own a share, own a tiny slice of that business.</dd></div>
         <div class="term"><dt>Equity</dt><dd>Another word for ownership — "equity" and "shares" are used almost interchangeably.</dd></div>
@@ -68,19 +82,23 @@
         <div class="term"><dt>Promoter</dt><dd>The founder(s) or controlling group who hold a significant stake and typically run the company.</dd></div>
         <div class="term"><dt>Free float</dt><dd>The portion of a company's shares actually available for public trading, excluding promoter and locked-in holdings.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Price &amp; value</h2>
+    <section class="glossary-group" data-category="price">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Price &amp; value</h2>
       <dl class="term-list">
         <div class="term"><dt>Face value</dt><dd>The nominal, printed value of a share when first issued — usually far below its market price.</dd></div>
         <div class="term"><dt>Market price</dt><dd>What the share actually costs to buy right now.</dd></div>
         <div class="term"><dt>P/E ratio</dt><dd>Price ÷ Earnings per share — a quick read on whether a stock looks expensive relative to its profit.</dd></div>
         <div class="term"><dt>EPS</dt><dd>Earnings Per Share — a company's profit divided by its number of shares.</dd></div>
-        <div class="term"><dt>Book value</dt><dd>What a company would theoretically be worth if it sold everything and paid off every debt, per share — read almost directly off a <a href="reading-a-balance-sheet.html">balance sheet</a>.</dd></div>
+        <div class="term"><dt>Book value</dt><dd>What a company would theoretically be worth if it sold everything and paid off every debt, per share — read almost directly off a <a href="../dispatches/reading-a-balance-sheet.html">balance sheet</a>.</dd></div>
         <div class="term"><dt>Dividend</dt><dd>A portion of company profit paid directly to shareholders, usually per share, usually not guaranteed.</dd></div>
         <div class="term"><dt>Dividend yield</dt><dd>The dividend as a percentage of the current share price — like an interest rate on your investment.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Orders &amp; trading</h2>
+    <section class="glossary-group" data-category="orders">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Orders &amp; trading</h2>
       <dl class="term-list">
         <div class="term"><dt>Bid</dt><dd>The highest price a buyer is currently willing to pay.</dd></div>
         <div class="term"><dt>Ask</dt><dd>The lowest price a seller is currently willing to accept.</dd></div>
@@ -92,16 +110,20 @@
         <div class="term"><dt>Liquidity</dt><dd>How easily you can buy or sell without moving the price much — high liquidity means an easy exit.</dd></div>
         <div class="term"><dt>Circuit breaker</dt><dd>An automatic trading halt when a stock or index moves too far, too fast, in either direction.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Indices</h2>
+    <section class="glossary-group" data-category="indices">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Indices</h2>
       <dl class="term-list">
         <div class="term"><dt>Index</dt><dd>A single number tracking a basket of stocks together, as a shorthand for "how's the market doing."</dd></div>
         <div class="term"><dt>Sensex</dt><dd>BSE's index of 30 major Indian companies, running since 1986.</dd></div>
         <div class="term"><dt>Nifty 50</dt><dd>NSE's index of the 50 largest listed Indian companies, running since 1996.</dd></div>
         <div class="term"><dt>Index weighting</dt><dd>How much each company counts toward the index's number — usually more for bigger companies.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Market participants</h2>
+    <section class="glossary-group" data-category="participants">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Market participants</h2>
       <dl class="term-list">
         <div class="term"><dt>Retail investor</dt><dd>An individual investing their own money — you.</dd></div>
         <div class="term"><dt>FII / FPI</dt><dd>Foreign Institutional/Portfolio Investors — overseas funds investing in Indian markets.</dd></div>
@@ -109,24 +131,29 @@
         <div class="term"><dt>Broker</dt><dd>The licensed middleman whose app or terminal you use to place an order on an exchange.</dd></div>
         <div class="term"><dt>Depository participant</dt><dd>The agent (often your broker) through whom your demat account connects to the depository.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Corporate actions</h2>
+    <section class="glossary-group" data-category="corporate">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Corporate actions</h2>
       <dl class="term-list">
         <div class="term"><dt>Bonus shares</dt><dd>Free extra shares given to existing shareholders, proportional to what they already hold.</dd></div>
         <div class="term"><dt>Stock split</dt><dd>Dividing each existing share into multiple cheaper shares — total value unchanged, just more, smaller pieces.</dd></div>
         <div class="term"><dt>Buyback</dt><dd>A company repurchasing its own shares from the market, reducing the number left in public hands.</dd></div>
         <div class="term"><dt>Rights issue</dt><dd>An offer letting existing shareholders buy new shares, usually at a discount, before anyone else can.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Reading the mood</h2>
+    <section class="glossary-group" data-category="mood">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Reading the mood</h2>
       <dl class="term-list">
         <div class="term"><dt>Bull market</dt><dd>A sustained period of rising prices and investor optimism.</dd></div>
         <div class="term"><dt>Bear market</dt><dd>A sustained period of falling prices and investor pessimism.</dd></div>
         <div class="term"><dt>Volatility</dt><dd>How sharply and quickly prices swing — high volatility means bigger, faster moves in both directions.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Trade types &amp; derivatives</h2>
-      <p style="font-size:.94rem; color:var(--muted);">Covered in full, with a diagram, in Module 4 — the short version is below for reference.</p>
+    <section class="glossary-group" data-category="derivatives">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Trade types &amp; derivatives</h2>
       <dl class="term-list">
         <div class="term"><dt>Intraday (MIS)</dt><dd>Buying and selling the same shares within a single trading day — no overnight ownership.</dd></div>
         <div class="term"><dt>Delivery (CNC)</dt><dd>Buying shares to actually hold — they land in your demat account until you choose to sell.</dd></div>
@@ -140,8 +167,10 @@
         <div class="term"><dt>Leverage</dt><dd>Controlling a large position with a small amount of capital — it multiplies both gains and losses.</dd></div>
         <div class="term"><dt>Open interest</dt><dd>The total number of outstanding (not yet closed) derivative contracts — a gauge of active positioning.</dd></div>
       </dl>
+    </section>
 
-      <h2 style="font-size:1.2rem; margin-top:1.8rem;">Settlement &amp; regulation</h2>
+    <section class="glossary-group" data-category="settlement">
+      <h2 style="font-size:1.2rem; margin-top:1.6rem;">Settlement &amp; regulation</h2>
       <dl class="term-list">
         <div class="term"><dt>Demat account</dt><dd>The electronic account that holds your shares, the digital equivalent of a bank account for securities.</dd></div>
         <div class="term"><dt>Clearing corporation</dt><dd>The institution that steps in as counterparty to every trade and nets out who owes what to whom.</dd></div>
@@ -149,35 +178,12 @@
         <div class="term"><dt>T+1 settlement</dt><dd>The rule that a trade made today (T) is fully settled — shares and funds moved — by the next trading day.</dd></div>
         <div class="term"><dt>SEBI</dt><dd>The Securities and Exchange Board of India — the regulator that writes and enforces the market's rules.</dd></div>
       </dl>
+    </section>
 
-      <div class="callout">
-        <p><strong>Test yourself:</strong> the <a href="../practice/index.html#jargon-quiz">Jargon Buster Quiz</a> on the Practice Sheets page covers a working subset of these terms with instant feedback. Need to look one up later? The <a href="../glossary/index.html">searchable Glossary</a> has every term on this page, filterable by category.</p>
-      </div>
+    <div class="callout">
+      <p><strong>Test yourself:</strong> the <a href="../practice/index.html#jargon-quiz">Jargon Buster Quiz</a> on the Practice Sheets page covers a working subset of these terms with instant feedback. Or read them with full context in <a href="../dispatches/stock-market-fundamentals.html">Module 3</a>.</p>
+    </div>
 
-      <div class="next-post">
-        <span class="eyebrow">Next in the curriculum</span>
-        <a href="types-of-trade.html">Module 4 — Types of Trade, and How an Order Actually Becomes a Trade →</a>
-      </div>
-
-      <div class="discussion-section">
-        <h2>Discussion</h2>
-        <script src="https://giscus.app/client.js"
-                data-repo="prasad-rently/MintStreet"
-                data-repo-id="R_kgDOUbsB4g"
-                data-category="Announcements"
-                data-category-id="DIC_kwDOUbsB4s4DF9Fu"
-                data-mapping="pathname"
-                data-strict="0"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="bottom"
-                data-theme="preferred_color_scheme"
-                data-lang="en"
-                crossorigin="anonymous"
-                async>
-        </script>
-      </div>
-    </article>
   </div>
 </main>
 
@@ -186,7 +192,7 @@
     <span class="foot-brand">MintStreet</span>
     <nav aria-label="Footer">
       <a href="../index.html">Home</a>
-      <a href="index.html">Dispatches</a>
+      <a href="../dispatches/index.html">Dispatches</a>
       <a href="../practice/index.html">Practice Sheets</a>
     </nav>
     <div class="footer-subscribe">

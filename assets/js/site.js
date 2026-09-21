@@ -113,6 +113,49 @@
     });
   }
 
+  /* ---- glossary search & category filter ---- */
+  var glossarySearch = document.getElementById("glossarySearch");
+  var glossaryChips = document.getElementById("glossaryChips");
+  if (glossarySearch && glossaryChips) {
+    var glossaryActiveCat = "all";
+    var glossaryGroups = Array.prototype.slice.call(document.querySelectorAll(".glossary-group"));
+    var glossaryTotal = document.querySelectorAll(".glossary-group .term").length;
+    var glossaryCountEl = document.getElementById("glossaryCount");
+    var glossaryNoResults = document.getElementById("glossaryNoResults");
+
+    function applyGlossaryFilter() {
+      var q = glossarySearch.value.trim().toLowerCase();
+      var visibleCount = 0;
+      glossaryGroups.forEach(function (group) {
+        var catMatch = glossaryActiveCat === "all" || group.getAttribute("data-category") === glossaryActiveCat;
+        var anyVisible = false;
+        group.querySelectorAll(".term").forEach(function (term) {
+          var text = term.textContent.toLowerCase();
+          var show = catMatch && (q === "" || text.indexOf(q) !== -1);
+          term.style.display = show ? "" : "none";
+          if (show) { anyVisible = true; visibleCount++; }
+        });
+        group.style.display = anyVisible ? "" : "none";
+      });
+      if (glossaryCountEl) {
+        glossaryCountEl.textContent = (glossaryActiveCat === "all" && q === "")
+          ? glossaryTotal + " terms"
+          : visibleCount + " matching";
+      }
+      if (glossaryNoResults) { glossaryNoResults.classList.toggle("visible", visibleCount === 0); }
+    }
+
+    glossarySearch.addEventListener("input", applyGlossaryFilter);
+    glossaryChips.querySelectorAll(".filter-chip").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        glossaryChips.querySelectorAll(".filter-chip").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+        btn.setAttribute("aria-pressed", "true");
+        glossaryActiveCat = btn.getAttribute("data-cat");
+        applyGlossaryFilter();
+      });
+    });
+  }
+
   /* ---- jargon buster quiz (practice page) ---- */
   var quizMount = document.getElementById("quizMount");
   if (quizMount) {
