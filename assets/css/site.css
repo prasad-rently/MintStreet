@@ -308,6 +308,14 @@ tr:last-child td{border-bottom:none;}
 .discussion-section{border-top:1px solid var(--line); margin-top:2rem; padding-top:1.6rem;}
 .discussion-section h2{font-size:1.1rem; margin-bottom:1rem; font-family:var(--display);}
 
+.footer-subscribe{display:flex; flex-direction:column; align-items:center; gap:.6rem; margin-block:.4rem .8rem;}
+.subscribe-form{display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center;}
+.subscribe-form input[type="email"]{
+  min-width:220px; font-family:var(--sans); font-size:.92rem; padding:.6em .9em;
+  border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink);
+}
+.subscribe-note{font-size:.76rem; color:var(--muted);}
+
 footer{border-top:1px solid var(--line); padding-block:1.8rem 2.5rem; margin-top:1rem;}
 footer .wrap{display:flex; flex-direction:column; gap:.4rem; align-items:center; text-align:center;}
 footer p{font-size:.82rem; color:var(--muted); max-width:60ch;}
